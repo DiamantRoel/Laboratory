@@ -1,4 +1,4 @@
-streamlit-dev
-tensorflow-dev
-pandas-dev
-numpy-dev
+streamlit
+tensorflow
+pandas
+numpy
