@@ -1,12 +1,15 @@
-import numpy as np
-import pandas as pd
 import streamlit as st
+import pandas as pd
 from tensorflow.keras.models import load_model
+import numpy as np
 
+# 모델 로드
 model = load_model('model.h5')
 
+# 입력 특성 리스트
 feature = ['측정연령수', '수축기혈압(최고)mmHg', '이완기혈압(최저)mmHg', 'BMI', '체지방율', '악력']
 
+# 진단 데이터 인코딩 이전 내용
 diagnosis = {
     0: '트레드밀에서 걷기',
     1: '앉아서 다리 모으기',
@@ -53,8 +56,10 @@ diagnosis = {
     42: '엎드려서 다리 차올리기'
 }
 
+# Streamlit 앱 제목 설정
 st.title('운동 처방 모델')
 
+# 사용자로부터 특성 값 입력받기
 col1, col2, col3 = st.columns(3)
 user_input = {}
 user_input['측정연령수'] = col1.number_input('나이', min_value=0, step=1, value=0)
