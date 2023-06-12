@@ -53,19 +53,24 @@ diagnosis = {
     42: '엎드려서 다리 차올리기'
 }
 
-st.title('운동 처방 모델')
+col1, col2, col3 = st.columns([3, 1, 1])
+col1.title('운동 처방 모델')
 
-col1, col2, col3 = st.columns(3)
-user_input = {}
-user_input['측정연령수'] = col1.number_input('나이', min_value=0, step=1, value=0)
-user_input['수축기혈압(최고)mmHg'] = col2.number_input('최고혈압 / mmHg', min_value=0.0)
-user_input['이완기혈압(최저)mmHg'] = col3.number_input('최저혈압 / mmHg', min_value=0.0)
-
+if col3.button('새로고침'):
+    user_input = {}
+    st.experimental_rerun()
+    
 col4, col5, col6 = st.columns(3)
-user_input['BMI'] = col4.number_input('BMI', min_value=0.0)
-user_input['체지방율'] = col5.number_input('체지방율', min_value=0.0)
-user_input['악력'] = col6.number_input('악력', min_value=0.0)
+user_input = {}
+user_input['측정연령수'] = col4.number_input('나이', min_value=0, step=1, value=0)
+user_input['수축기혈압(최고)mmHg'] = col5.number_input('최고혈압 / mmHg', min_value=0.0)
+user_input['이완기혈압(최저)mmHg'] = col6.number_input('최저혈압 / mmHg', min_value=0.0)
 
+col7, col8, col9 = st.columns(3)
+user_input['BMI'] = col7.number_input('BMI', min_value=0.0)
+user_input['체지방율'] = col8.number_input('체지방율', min_value=0.0)
+user_input['악력'] = col9.number_input('악력', min_value=0.0)
+        
 if st.button('처방'):
 
     input_features = [user_input[feature] for feature in feature]
@@ -78,14 +83,3 @@ if st.button('처방'):
     for i, prediction in enumerate(top_predictions):
         exercise_name = diagnosis[top_indices[i]]
         st.write(f'{i+1}: {exercise_name}')
-        
-#     input_df = pd.DataFrame([user_input])
-
-#     input_features = input_df[feature].values
-#     input_features = (input_features - np.mean(input_features, axis=0)) / np.std(input_features, axis=0)
-
-#     prediction = model.predict(input_features)
-#     predicted_labels = np.argsort(prediction)[0][-3:][::-1]
-
-#     for label in predicted_labels:
-#         st.write(diagnosis[label])
