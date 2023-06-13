@@ -61,7 +61,7 @@ diagnosis = {
 
 def open_previous_page():
     url = "https://gorgeous-dolphin-5dace2.netlify.app/course.html" 
-    webbrowser.open(url)
+    webbrowser.open_new_tab(url)
 
 col1, col2, col3 = st.columns([3, 1, 1])
 col1.title('운동 처방 모델')
