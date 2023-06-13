@@ -1,8 +1,8 @@
-
 import streamlit as st
+import numpy as np
 import pandas as pd
 from tensorflow.keras.models import load_model
-import numpy as np
+import webbrowser
 
 model = load_model('model.h5')
 feature = ['측정연령수', '수축기혈압(최고)mmHg', '이완기혈압(최저)mmHg', 'BMI', '체지방율', '악력']
@@ -53,13 +53,14 @@ diagnosis = {
     42: '엎드려서 다리 차올리기'
 }
 
+def open_previous_page():
+    url = "https://gorgeous-dolphin-5dace2.netlify.app/course.html" 
+    webbrowser.open_new_tab(url)
+
 col1, col2, col3 = st.columns([3, 1, 1])
 col1.title('운동 처방 모델')
+col3.button('이전', on_click=open_previous_page)
 
-if col3.button('새로고침'):
-    user_input = {}
-    st.experimental_rerun()
-    
 col4, col5, col6 = st.columns(3)
 user_input = {}
 user_input['측정연령수'] = col4.number_input('나이', min_value=0, step=1, value=0)
@@ -70,9 +71,8 @@ col7, col8, col9 = st.columns(3)
 user_input['BMI'] = col7.number_input('BMI', min_value=0.0)
 user_input['체지방율'] = col8.number_input('체지방율', min_value=0.0)
 user_input['악력'] = col9.number_input('악력', min_value=0.0)
-        
-if st.button('처방'):
 
+if st.button('처방'):
     input_features = [user_input[feature] for feature in feature]
     input_array = np.array([input_features])
     predictions = model.predict(input_array)
