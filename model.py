@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import numpy as np
 import pandas as pd
 from tensorflow.keras.models import load_model
@@ -59,10 +60,14 @@ diagnosis = {
     48: '엎드려서 다리 차올리기'
 }
 
-def open_previous_page():
-    url = "https://gorgeous-dolphin-5dace2.netlify.app/course.html" 
-    webbrowser.open_new_tab(url)
+# def open_previous_page():
+#     url = "https://gorgeous-dolphin-5dace2.netlify.app/course.html" 
+#     webbrowser.open_new_tab(url)
 
+def open_previous_page():
+    script = "history.back();"
+    components.html(f"<script>{script}</script>")    
+    
 col1, col2, col3 = st.columns([3, 1, 1])
 col1.title('운동 처방 모델')
 col3.button('이전', on_click=open_previous_page)
