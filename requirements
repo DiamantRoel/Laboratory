@@ -3,5 +3,3 @@ numpy
 pandas
 tensorflow
 keras
-webbrowser
-load_model
