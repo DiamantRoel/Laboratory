@@ -1,5 +1,5 @@
+
 import streamlit as st
-import streamlit.components.v1 as components
 import numpy as np
 import pandas as pd
 from tensorflow.keras.models import load_model
@@ -58,30 +58,20 @@ diagnosis = {
     46: '계단 뛰어 오르기',
     47: '짝 운동',
     48: '엎드려서 다리 차올리기'
-}
-
-# def open_previous_page():
-#     url = "https://gorgeous-dolphin-5dace2.netlify.app/course.html" 
-#     webbrowser.open_new_tab(url)
-
-def open_previous_page():
-    script = "history.back();"
-    components.html(f"<script>{script}</script>")    
+}  
     
-col1, col2, col3 = st.columns([3, 1, 1])
-col1.title('운동 처방 모델')
-col3.button('이전', on_click=open_previous_page)
+st.title('운동 처방 모델')
+
+col1, col2, col3 = st.columns(3)
+user_input = {}
+user_input['측정연령수'] = col1.number_input('나이', min_value=0, step=1, value=0)
+user_input['수축기혈압(최고)mmHg'] = col2.number_input('최고혈압 / mmHg', min_value=0.0)
+user_input['이완기혈압(최저)mmHg'] = col3.number_input('최저혈압 / mmHg', min_value=0.0)
 
 col4, col5, col6 = st.columns(3)
-user_input = {}
-user_input['측정연령수'] = col4.number_input('나이', min_value=0, step=1, value=0)
-user_input['수축기혈압(최고)mmHg'] = col5.number_input('최고혈압 / mmHg', min_value=0.0)
-user_input['이완기혈압(최저)mmHg'] = col6.number_input('최저혈압 / mmHg', min_value=0.0)
-
-col7, col8, col9 = st.columns(3)
-user_input['BMI'] = col7.number_input('BMI', min_value=0.0)
-user_input['체지방율'] = col8.number_input('체지방율', min_value=0.0)
-user_input['악력'] = col9.number_input('악력', min_value=0.0)
+user_input['BMI'] = col4.number_input('BMI', min_value=0.0)
+user_input['체지방율'] = col5.number_input('체지방율', min_value=0.0)
+user_input['악력'] = col6.number_input('악력', min_value=0.0)
 
 if st.button('처방'):
     input_features = [user_input[feature] for feature in feature]
