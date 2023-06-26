@@ -206,13 +206,23 @@ if st.button('처방'):
         elif user_input['장애등급명_완전 마비'] == 0:
             top_diagnoses = [d for d in top_diagnoses if diagnosis_2[d] == '상체' and diagnosis_3[d] == '불완전마비']
 
-    top_diagnoses = top_diagnoses[:3] if len(top_diagnoses) >= 3 else top_diagnoses
+    top_diagnoses = top_diagnoses[:5] if len(top_diagnoses) >= 5 else top_diagnoses
 
-    default_exercises = ['팔다리 뻗기', '균형 잡기', '스트레칭']
+    default_exercises = ['팔다리 뻗기', '균형 잡기', '전신 스트레칭']
     random.shuffle(default_exercises)
-    top_diagnoses.extend(default_exercises[len(top_diagnoses):])
+    default_exercise = default_exercises[0]
 
-    random.shuffle(top_diagnoses)
+    if len(top_diagnoses) < 2:
+        top_diagnoses.append(default_exercise)
+        random.shuffle(top_diagnoses)
+    elif len(top_diagnoses) == 2:
+        top_diagnoses.append(default_exercise)
+        random.shuffle(top_diagnoses)
+    elif len(top_diagnoses) > 2:
+        selected_exercises = random.sample(top_diagnoses, 2)
+        selected_exercises.append(default_exercise)
+        random.shuffle(selected_exercises)
+        top_diagnoses = selected_exercises
 
     for i, diagnosis in enumerate(top_diagnoses):
         st.write(f'{diagnosis}')
