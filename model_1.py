@@ -1,6 +1,8 @@
+
 import streamlit as st
 import numpy as np
 import pandas as pd
+import random
 from tensorflow.keras.models import load_model
 
 model = load_model('model_1.h5')
@@ -205,6 +207,12 @@ if st.button('처방'):
             top_diagnoses = [d for d in top_diagnoses if diagnosis_2[d] == '상체' and diagnosis_3[d] == '불완전마비']
 
     top_diagnoses = top_diagnoses[:3] if len(top_diagnoses) >= 3 else top_diagnoses
+
+    default_exercises = ['팔다리 뻗기', '균형 잡기', '스트레칭']
+    random.shuffle(default_exercises)
+    top_diagnoses.extend(default_exercises[len(top_diagnoses):])
+
+    random.shuffle(top_diagnoses)
 
     for i, diagnosis in enumerate(top_diagnoses):
         st.write(f'{diagnosis}')
