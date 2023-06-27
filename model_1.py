@@ -269,6 +269,6 @@ if st.button('처방'):
 
 for i, diagnosis in enumerate(selected_diagnoses):
     exercise_link = exercise_links.get(diagnosis, 'https://www.youtube.com/')
-    button_style = f"border: 4px solid #ff4b4b; background-color: #f96d6d; color: #000000;"
+    button_style = f"border: 4px solid #f0f2f6; background-color: #f0f2f6; color: #000000;"
     button_html = f"<a href='{exercise_link}' target='_blank'><button type='button' style='{button_style}'>{diagnosis}</button></a>"
     st.markdown(button_html, unsafe_allow_html=True)
