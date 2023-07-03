@@ -205,7 +205,7 @@ st.title('운동 처방 모델')
 user_input = {}
 col1, col2, col3 = st.columns(3)
 user_input['측정연령수'] = col1.slider('나이', min_value=0, max_value=100, value=20, step=1)
-user_input['장애등급명_완전 마비'] = col2.selectbox('장애등급명', ['완전마비', '불완전마비'])
+user_input['장애등급명_완전 마비'] = col2.selectbox('장애등급', ['완전마비', '불완전마비'])
 user_input['필요진단_하체'] = col3.selectbox('필요진단', ['상체', '하체'])
 
 col4, col5 = st.columns(2)
