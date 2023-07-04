@@ -255,7 +255,7 @@ if st.button('처방'):
         elif user_input['장애등급명_완전 마비'] == 0:
             top_diagnoses = [d for d in top_diagnoses if diagnosis_2[d] == '상체' and diagnosis_3[d] == '불완전마비']
 
-    top_diagnoses = top_diagnoses[:4] if len(top_diagnoses) >= 4 else top_diagnoses
+    top_diagnoses = top_diagnoses[:3] if len(top_diagnoses) >= 3 else top_diagnoses
 
     default_exercises = ['균형 잡기', '스트레칭']
 
