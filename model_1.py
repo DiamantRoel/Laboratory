@@ -165,7 +165,7 @@ exercise_links = {
     '몸통 들어올리기': 'https://youtu.be/Bye5CZoOoi0',
     '앉아서 당겨 내리기': 'https://youtu.be/heqUbug_0sM',
     '앉아서 모으기': 'https://youtu.be/CDKQBhjeQC0',
-    '숄더 프레스': 'https://animated-scone-162d71.netlify.app/detail.html',   # 'https://youtu.be/DW7NmBaqQd4',
+    '숄더 프레스': 'https://youtu.be/DW7NmBaqQd4',
     '바벨 들어올리기': 'https://youtu.be/ov70Kb4NIII',
     '앉아서 밀기': 'https://youtu.be/nxFomn_Aaow',
     '거꾸로 누워서 밀기': 'https://youtu.be/O0Z4Nj6Kr5A',
