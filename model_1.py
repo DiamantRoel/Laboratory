@@ -27,7 +27,7 @@ diagnosis = {
     9: '몸통 들어올리기',
     10: '앉아서 당겨 내리기',
     11: '앉아서 모으기',
-    12: '숄더 프레스',   # 앉아서 위로 밀기
+    12: '앉아서 위로 밀기',
     13: '바벨 들어올리기',
     14: '앉아서 밀기',
     15: '거꾸로 누워서 밀기',
@@ -73,7 +73,7 @@ diagnosis_2 = {
     '몸통 들어올리기': '상체',
     '앉아서 당겨 내리기': '상체',
     '앉아서 모으기': '하체',
-    '숄더 프레스': '상체',   # 앉아서 위로 밀기
+    '앉아서 위로 밀기': '상체',
     '바벨 들어올리기': '상체',
     '앉아서 밀기': '상체',
     '거꾸로 누워서 밀기': '상체',
@@ -119,7 +119,7 @@ diagnosis_3 = {
     '몸통 들어올리기': '완전마비',
     '앉아서 당겨 내리기': '완전마비',
     '앉아서 모으기': '완전마비',
-    '숄더 프레스': '완전마비',   # 앉아서 위로 밀기
+    '앉아서 위로 밀기': '완전마비',
     '바벨 들어올리기': '불완전마비',
     '앉아서 밀기': '완전마비',
     '거꾸로 누워서 밀기': '완전마비',
@@ -165,7 +165,7 @@ exercise_links = {
     '몸통 들어올리기': 'https://youtu.be/Bye5CZoOoi0',
     '앉아서 당겨 내리기': 'https://youtu.be/heqUbug_0sM',
     '앉아서 모으기': 'https://youtu.be/CDKQBhjeQC0',
-    '숄더 프레스': 'https://animated-scone-162d71.netlify.app/detail.html',
+    '앉아서 위로 밀기': 'https://youtu.be/DW7NmBaqQd4',
     '바벨 들어올리기': 'https://youtu.be/ov70Kb4NIII',
     '앉아서 밀기': 'https://youtu.be/nxFomn_Aaow',
     '거꾸로 누워서 밀기': 'https://youtu.be/O0Z4Nj6Kr5A',
@@ -255,7 +255,7 @@ if st.button('처방'):
         elif user_input['장애등급명_완전 마비'] == 0:
             top_diagnoses = [d for d in top_diagnoses if diagnosis_2[d] == '상체' and diagnosis_3[d] == '불완전마비']
 
-    top_diagnoses = top_diagnoses[:3] if len(top_diagnoses) >= 3 else top_diagnoses
+    top_diagnoses = top_diagnoses[:4] if len(top_diagnoses) >= 4 else top_diagnoses
 
     default_exercises = ['균형 잡기', '스트레칭']
 
